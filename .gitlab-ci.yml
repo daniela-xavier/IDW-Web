@@ -1,28 +1,28 @@
 image: node
 
 stages:
-  - test
-  - deploy
+- test
+- deploy
 
-  test:
-    stage: test
-    script:
-      - npm ci
-      - npm test
-    coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
-    artifacts:
-      paths:
-        - coverage/
+test:
+  stage: test
+  script:
+    - npm ci
+    - npm test
+  coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
+  artifacts:
+    paths:
+      - coverage/
 
-  pages:
-      stage: deploy
-      dependencies:
-        - test
-      script:
-        - mv coverage/ public/
-      artifacts:
-        paths:
-          - public
-        expire_in: 30 days
-      only:
-        - master
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mv coverage/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
