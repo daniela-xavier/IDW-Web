@@ -2,6 +2,7 @@ image: node
 
 stages:
 - test
+- deploy
 
 teste:
   stage: test
@@ -12,3 +13,16 @@ teste:
   artifacts:
     paths:
       - coverage/
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mv coverage/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
