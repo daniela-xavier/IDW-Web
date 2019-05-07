@@ -10,4 +10,5 @@ teste:
     - npm test
   coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
   artifacts:
-    - coverage/
+    paths:
+      - coverage/
