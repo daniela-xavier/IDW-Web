@@ -9,3 +9,5 @@ teste:
     - npm ci
     - npm test
   coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
+  artifacts:
+    - coverage/
