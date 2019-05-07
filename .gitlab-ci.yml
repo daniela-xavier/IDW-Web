@@ -5,7 +5,7 @@ stages:
 
 teste:
   stage: test
-script:
-  - npm ci
-  - npm test
+  script:
+    - npm ci
+    - npm test
   coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
